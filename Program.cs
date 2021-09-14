@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 
-namespace MyFirstSolution
+namespace LearningCSharp
 {
     class Program
     {
