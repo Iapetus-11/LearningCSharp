@@ -27,7 +27,7 @@ namespace MyFirstSolution
             return _mult(x, _pow(x, n - 1));
         }
 
-        public BigInteger Fibonacci(int n)
+        private BigInteger Fibonacci(int n)
         {
             BigInteger[] initial = {0, 1, 1, 1};
             return _pow(initial, n)[1];
@@ -40,9 +40,10 @@ namespace MyFirstSolution
 
             FibonacciMatrix fibonacciMatrixRunner = new FibonacciMatrix();
             BigInteger result = fibonacciMatrixRunner.Fibonacci(fibonacciUpTo);
-            
+            TimeSpan timeTaken = DateTime.Now - startTime;
+
             Console.WriteLine(result);
-            Console.WriteLine($"FibonacciMatrix.fibonacci({fibonacciUpTo}) took {(DateTime.Now - startTime).TotalSeconds} seconds");
+            Console.WriteLine($"FibonacciMatrix.fibonacci({fibonacciUpTo}) took {timeTaken.TotalSeconds} seconds");
         }
     }
 }
