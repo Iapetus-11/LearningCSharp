@@ -7,7 +7,8 @@ namespace MyFirstSolution
     {
         static void Main(string[] args)
         {
-            FibonacciMatrix.Test();
+            // FibonacciMatrix.Test();
+            PasswordGenerator.Test();
         }
     }
 }
