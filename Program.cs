@@ -7,8 +7,9 @@ namespace LearningCSharp
     {
         static void Main(string[] args)
         {
-            new FibonacciMatrix().Test(100_000);
+            // new FibonacciMatrix().Test(100_000);
             // PasswordGenerator.Test(100_000, 20);
+            Anagram.Test();
         }
     }
 }
