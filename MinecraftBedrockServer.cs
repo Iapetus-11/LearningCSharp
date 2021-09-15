@@ -44,6 +44,8 @@ namespace LearningCSharp
             sock.SendTo(sendBuf, endpoint);
 
             byte[] recvBuf = { };
+
+            sock.ReceiveFrom(recvBuf, endpoint);
         }
     }
 }
