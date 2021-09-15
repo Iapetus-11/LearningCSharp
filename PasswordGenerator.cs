@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace MyFirstSolution
+namespace LearningCSharp
 {
     public class PasswordGenerator
     {
