@@ -8,7 +8,7 @@ namespace MyFirstSolution
         private static char[] chars =
             "abcdefhijklmnopqrstuvwxyzABCDEFHIJKLMNOPQRSTUVWXYZ123456789&%$#@!+-=".ToCharArray();
 
-        public static String GeneratePassword(int length)
+        public static string GeneratePassword(int length)
         {
             StringBuilder password = new StringBuilder();
             Random random = new Random();
