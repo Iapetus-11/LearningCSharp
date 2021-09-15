@@ -5,8 +5,6 @@ namespace MyFirstSolution
 {
     public class FibonacciMatrix
     {
-        // private BigInteger[] _mat = { 0, 0, 0, 0 };
-
         private BigInteger[] _mult(BigInteger[] x, BigInteger[] y)
         {
             return new BigInteger[]
