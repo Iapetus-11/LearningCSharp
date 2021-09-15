@@ -8,7 +8,7 @@ namespace LearningCSharp
         private static char[] chars =
             "abcdefhijklmnopqrstuvwxyzABCDEFHIJKLMNOPQRSTUVWXYZ123456789&%$#@!+-=".ToCharArray();
 
-        public static string GeneratePassword(int length)
+        private static string GeneratePassword(int length)
         {
             StringBuilder password = new StringBuilder();
             Random random = new Random();
@@ -21,20 +21,18 @@ namespace LearningCSharp
             return password.ToString();
         }
 
-        public static void Test()
+        public static void Test(int n, int length)
         {
-            int iterations = 100_000;
-            int length = 10;
             DateTime startTime = DateTime.Now;
             
-            for (int i = 0; i < iterations; i++)
+            for (int i = 0; i < n; i++)
             {
                 GeneratePassword(length);
             }
             
             TimeSpan timeTaken = DateTime.Now - startTime;
             
-            Console.WriteLine($"PasswordGenerator.GeneratePassword({iterations}) x ${iterations} took {timeTaken.TotalSeconds} seconds");
+            Console.WriteLine($"PasswordGenerator.GeneratePassword({length}) x ${n} took {timeTaken.TotalSeconds} seconds");
             Console.WriteLine($"Sample: \"{GeneratePassword(length)}\"");
         }
     }

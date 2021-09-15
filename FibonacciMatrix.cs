@@ -5,7 +5,7 @@ namespace LearningCSharp
 {
     public class FibonacciMatrix
     {
-        private BigInteger[] _mult(BigInteger[] x, BigInteger[] y)
+        private static BigInteger[] _mult(BigInteger[] x, BigInteger[] y)
         {
             return new BigInteger[]
             {
@@ -16,7 +16,7 @@ namespace LearningCSharp
             };
         }
 
-        private BigInteger[] _pow(BigInteger[] x, int n)
+        private static BigInteger[] _pow(BigInteger[] x, int n)
         {
             if (n == 0) return new BigInteger[] { 1, 0, 0, 1 };
             if (n == 1) return x;
@@ -25,23 +25,21 @@ namespace LearningCSharp
             return _mult(x, _pow(x, n - 1));
         }
 
-        private BigInteger Fibonacci(int n)
+        private BigInteger _fibonacci(int n)
         {
             BigInteger[] initial = {0, 1, 1, 1};
             return _pow(initial, n)[1];
         }
 
-        public static void Test()
+        public void Test(int n)
         {
-            int fibonacciUpTo = 1_000_000;
             DateTime startTime = DateTime.Now;
 
-            FibonacciMatrix fibonacciMatrixRunner = new FibonacciMatrix();
-            BigInteger result = fibonacciMatrixRunner.Fibonacci(fibonacciUpTo);
+            BigInteger result = _fibonacci(n);
             TimeSpan timeTaken = DateTime.Now - startTime;
 
             Console.WriteLine(result);
-            Console.WriteLine($"FibonacciMatrix.fibonacci({fibonacciUpTo}) took {timeTaken.TotalSeconds} seconds");
+            Console.WriteLine($"FibonacciMatrix.fibonacci({n}) took {timeTaken.TotalSeconds} seconds");
         }
     }
 }
