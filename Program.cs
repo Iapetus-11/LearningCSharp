@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Net;
 using System.Numerics;
 
 namespace LearningCSharp
@@ -9,7 +11,13 @@ namespace LearningCSharp
         {
             // new FibonacciMatrix().Test(100_000);
             // PasswordGenerator.Test(100_000, 20);
-            Anagram.Test();
+            // Anagram.Test();
+
+            args = new string[] {"xenon.iapetus11.me", "19132"};
+            
+            Console.WriteLine(args);
+
+            new MinecraftBedrockServer(args[0], Int32.Parse(args[1])).Test();
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Text;
 
 namespace LearningCSharp
@@ -25,27 +27,44 @@ namespace LearningCSharp
     public class MinecraftBedrockServer
     {
         
-        private static readonly string _request = "\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\x00\xfe\xfe\xfe\xfe\xfd\xfd\xfd\xfd\x124Vx";
-        private IPAddress _ipAddress;
+        // private static readonly string _request = "\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\x00\xfe\xfe\xfe\xfe\xfd\xfd\xfd\xfd\x124Vx";
+        private static readonly byte[] _request =
+            {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 254, 254, 254, 254, 253, 253, 253, 253, 18, 52, 86, 120};
+        private string _host;
         private int _port;
 
-        public MinecraftBedrockServer(IPAddress i, int p)
+        public MinecraftBedrockServer(string h, int p)
         {
-            _ipAddress = i;
+            _host = h;
             _port = p;
         }
 
         public MinecraftBedrockStatus FetchStatus()
         {
-            Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            byte[] sendBuf = Encoding.ASCII.GetBytes(_request);
-            IPEndPoint endpoint = new IPEndPoint(_ipAddress, _port);
+            UdpClient udpClient = new UdpClient();
+            Console.WriteLine("connecting");
+            udpClient.Connect(_host, _port);
+            Console.WriteLine("connected");
 
-            sock.SendTo(sendBuf, endpoint);
+            udpClient.Send(_request, _request.Length);
+            
+            Console.WriteLine("sent");
 
-            byte[] recvBuf = { };
+            IPEndPoint remote = new IPEndPoint(IPAddress.Any, 0);
+            Console.WriteLine("waiting");
+            byte[] recvBytes = udpClient.Receive(ref remote);
+            Console.WriteLine("received!");
+            string recvData = Encoding.ASCII.GetString(recvBytes);
+            
+            Console.WriteLine(recvData);
+            
+            return new MinecraftBedrockStatus();
+        }
 
-            sock.ReceiveFrom(recvBuf, endpoint);
+        public void Test()
+        {
+            MinecraftBedrockStatus status = FetchStatus();
+            Console.WriteLine(status);
         }
     }
 }
