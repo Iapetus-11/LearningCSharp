@@ -48,16 +48,22 @@ namespace LearningCSharp
 
             IPEndPoint remote = new IPEndPoint(IPAddress.Any, 0);
             string data = Encoding.ASCII.GetString(udpClient.Receive(ref remote));
-
             string[] split = data.Split(';');
 
-            return new MinecraftBedrockStatus(split[0], split[3]);
+            return new MinecraftBedrockStatus(split[0], split[3], split[7], split[8], Int32.Parse(split[2]), Int32.Parse(split[4]), Int32.Parse(split[5]));
         }
 
         public void Test()
         {
             MinecraftBedrockStatus status = FetchStatus();
-            Console.WriteLine(status);
+            
+            Console.WriteLine($"Server: ${_host}:${_port}");
+            Console.WriteLine($"MOTD: {status.Motd}");
+            Console.WriteLine($"Players: {status.OnlinePlayers} / {status.MaxPlayers}");
+            Console.WriteLine($"Version: {status.Version}");
+            Console.WriteLine($"Protocol: {status.Protocol}");
+            Console.WriteLine($"World: {status.World}");
+            Console.WriteLine($"Gamemode: {status.Gamemode}");
         }
     }
 }
