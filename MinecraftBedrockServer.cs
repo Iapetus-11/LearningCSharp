@@ -57,7 +57,7 @@ namespace LearningCSharp
         {
             MinecraftBedrockStatus status = FetchStatus();
             
-            Console.WriteLine($"Server: ${_host}:${_port}");
+            Console.WriteLine($"Server: {_host}:{_port}");
             Console.WriteLine($"MOTD: {status.Motd}");
             Console.WriteLine($"Players: {status.OnlinePlayers} / {status.MaxPlayers}");
             Console.WriteLine($"Version: {status.Version}");
