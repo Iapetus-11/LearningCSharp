@@ -47,10 +47,10 @@ namespace LearningCSharp
             udpClient.Send(_request, _request.Length);
 
             IPEndPoint remote = new IPEndPoint(IPAddress.Any, 0);
-            string data = Encoding.ASCII.GetString(udpClient.Receive(ref remote));
+            string data = Encoding.UTF8.GetString(udpClient.Receive(ref remote));
             string[] split = data.Split(';');
 
-            return new MinecraftBedrockStatus(split[0], split[3], split[7], split[8], Int32.Parse(split[2]), Int32.Parse(split[4]), Int32.Parse(split[5]));
+            return new MinecraftBedrockStatus(split[1], split[3], split[7], split[8], Int32.Parse(split[2]), Int32.Parse(split[4]), Int32.Parse(split[5]));
         }
 
         public void Test()
