@@ -19,7 +19,7 @@ namespace LearningCSharp
         
         private static bool _isAnagram(string x, string y)
         {
-            HashSet<char> xAsSet = x.ToHashSet();
+            var xAsSet = x.ToHashSet();
             xAsSet.SymmetricExceptWith(y);
             
             return x.Length == y.Length && xAsSet.Count == 0;

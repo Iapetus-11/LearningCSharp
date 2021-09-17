@@ -41,21 +41,21 @@ namespace LearningCSharp
 
         public MinecraftBedrockStatus FetchStatus()
         {
-            UdpClient udpClient = new UdpClient();
+            var udpClient = new UdpClient();
             udpClient.Connect(_host, _port);
 
             udpClient.Send(_request, _request.Length);
 
-            IPEndPoint remote = new IPEndPoint(IPAddress.Any, 0);
-            string data = Encoding.UTF8.GetString(udpClient.Receive(ref remote));
-            string[] split = data.Split(';');
+            var remote = new IPEndPoint(IPAddress.Any, 0);
+            var data = Encoding.UTF8.GetString(udpClient.Receive(ref remote));
+            var split = data.Split(';');
 
             return new MinecraftBedrockStatus(split[1], split[3], split[7], split[8], Int32.Parse(split[2]), Int32.Parse(split[4]), Int32.Parse(split[5]));
         }
 
         public void Test()
         {
-            MinecraftBedrockStatus status = FetchStatus();
+            var status = FetchStatus();
             
             Console.WriteLine($"Server: {_host}:{_port}");
             Console.WriteLine($"MOTD: {status.Motd}");

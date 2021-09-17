@@ -27,16 +27,16 @@ namespace LearningCSharp
 
         private BigInteger _fibonacci(int n)
         {
-            BigInteger[] initial = {0, 1, 1, 1};
+            var initial = new BigInteger[] {0, 1, 1, 1};
             return _pow(initial, n)[1];
         }
 
         public void Test(int n)
         {
-            DateTime startTime = DateTime.Now;
+            var startTime = DateTime.Now;
 
-            BigInteger result = _fibonacci(n);
-            TimeSpan timeTaken = DateTime.Now - startTime;
+            var result = _fibonacci(n);
+            var timeTaken = DateTime.Now - startTime;
 
             Console.WriteLine(result);
             Console.WriteLine($"FibonacciMatrix.fibonacci({n}) took {timeTaken.TotalSeconds} seconds");

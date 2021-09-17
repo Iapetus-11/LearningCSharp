@@ -7,8 +7,8 @@ namespace LearningCSharp
     {
         public static int[] Recaman(int upTo)
         {
-            int[] result = new int[upTo];
-            HashSet<int> already = new HashSet<int>();
+            var result = new int[upTo];
+            var already = new HashSet<int>();
             already.Add(0);
 
             for (int i = 1; i < upTo - 1; i++)
@@ -28,7 +28,7 @@ namespace LearningCSharp
         {
             Console.Write($"Recaman sequence up to {upTo}: ");
 
-            int[] result = Recaman(upTo);
+            var result = Recaman(upTo);
 
             for (int i = 0; i < result.Length; i++)
             {
