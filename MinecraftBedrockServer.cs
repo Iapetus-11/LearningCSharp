@@ -26,10 +26,10 @@ namespace LearningCSharp
     {
         
         // private static readonly string _request = "\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\x00\xfe\xfe\xfe\xfe\xfd\xfd\xfd\xfd\x124Vx";
-        private static readonly byte[] _request =
+        private static readonly byte[] Request =
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 254, 254, 254, 254, 253, 253, 253, 253, 18, 52, 86, 120};
-        private string _host;
-        private int _port;
+        private readonly string _host;
+        private readonly int _port;
 
         public MinecraftBedrockServer(string h, int p)
         {
@@ -42,7 +42,7 @@ namespace LearningCSharp
             var udpClient = new UdpClient();
             udpClient.Connect(_host, _port);
 
-            udpClient.Send(_request, _request.Length);
+            udpClient.Send(Request, Request.Length);
 
             var remote = new IPEndPoint(IPAddress.Any, 0);
             var data = Encoding.UTF8.GetString(udpClient.Receive(ref remote));
