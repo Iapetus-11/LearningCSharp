@@ -12,8 +12,8 @@ namespace LearningCSharp
             // new FibonacciMatrix().Test(100_000);
             // PasswordGenerator.Test(100_000, 20);
             // Anagram.Test();
-            // new MinecraftBedrockServer(args[0], Int32.Parse(args[1])).Test();
-            RecamanSequence.Test(100);
+            new MinecraftBedrockServer("xenon.iapetus11.me", 19132).Test();
+            // RecamanSequence.Test(100);
         }
     }
 }
