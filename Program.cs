@@ -22,6 +22,8 @@ namespace LearningCSharp
             // circleList.Insert(1, 1);
             // circleList.Insert(circleList.Count + 2, 1);
             // for (int i = 0; i < circleList.Count; i++) Console.WriteLine(circleList[i]);
+
+            // MinecraftServerRCON.Test();
         }
     }
 }
