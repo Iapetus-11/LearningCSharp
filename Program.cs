@@ -27,7 +27,7 @@ namespace LearningCSharp
 
             // MinecraftServerRCON.Test();
 
-            // FakeHashCode.Test();
+            FakeHashCode.Test();
         }
     }
 }
