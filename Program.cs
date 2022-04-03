@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Numerics;
@@ -24,6 +26,8 @@ namespace LearningCSharp
             // for (int i = 0; i < circleList.Count; i++) Console.WriteLine(circleList[i]);
 
             // MinecraftServerRCON.Test();
+
+            // FakeHashCode.Test();
         }
     }
 }
