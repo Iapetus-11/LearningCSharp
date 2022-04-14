@@ -4,6 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Numerics;
+using BenchmarkDotNet.Columns;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Loggers;
+using BenchmarkDotNet.Running;
+using BenchmarkDotNet.Validators;
 
 namespace LearningCSharp
 {
@@ -26,8 +31,18 @@ namespace LearningCSharp
             // for (int i = 0; i < circleList.Count; i++) Console.WriteLine(circleList[i]);
 
             // MinecraftServerRCON.Test();
-
-            FakeHashCode.Test();
+            
+            // FakeHashCode.Test();
+            
+            // var config = new ManualConfig()
+            //         .WithOptions(ConfigOptions.DisableOptimizationsValidator)
+            //         .AddValidator(JitOptimizationsValidator.DontFailOnError)
+            //         .AddLogger(ConsoleLogger.Default)
+            //         .AddColumnProvider(DefaultColumnProviders.Instance);
+            //
+            // BenchmarkRunner.Run<KClosest3dPointsBenchmarking>(config);
+            
+            KClosest3dPointsBenchmarking.Test();
         }
     }
 }
